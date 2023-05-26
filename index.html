@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know a Country</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="nav">
+            <img class="nav__logo" src="img/logo.png" alt="Know a Country logo">
+            <form class="form" action="#">
+                <input class="form__input" type="text" placeholder="Write Country Name" required>
+                <input class="form__button" type="button" value="Check">
+            </form>
+        </nav>
+        <section class="section">
+            <h1 class="section__header"></h1>
+            <h2 class="section__text section__text--official"></h2>
+            <div class="section__block">
+                <img class="section__img section__img--flag" src="" alt="">
+                <h2 class="section__block-text">Flag</h2>
+            </div>
+            <div class="section__block">
+                <img class="section__img section__img--coatOfArms" src="" alt="">
+                <h2 class="section__block-text">Coat of arms</h2>
+            </div>
+            <h2 class="section__text section__text--capital"></h2>
+            <h2 class="section__text section__text--language"></h2>
+            <h2 class="section__text section__text--continent"></h2>
+            <h2 class="section__text section__text--currency"></h2>
+            <button class="section__button">
+                <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                    text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                    clip-rule="evenodd" viewBox="0 0 512 512">
+                    <path
+                        d="M512 256C512 114.61 397.38 0 256 0 114.61 0 0 114.61 0 256c0 141.38 114.61 256 256 256 141.38 0 256-114.62 256-256zm-211.58-88.56c3.96-4.07 3.91-10.63-.12-14.63s-10.52-3.95-14.48.12l-94.23 97.13c-3.95 4.06-3.91 10.58.08 14.59l94.23 94.5c4 4.02 10.49 4 14.48-.05s3.97-10.6-.04-14.62l-87.02-87.27 87.1-89.77z" />
+                </svg>
+            </button>
+        </section>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
