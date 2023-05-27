@@ -19,7 +19,7 @@ const hideSection = () => {
     focusInput();
 }
 const warningMessageContent = (time) => {
-    return `<h2>Somthing Went Wrong</h2>
+    return `<h2>Something Went Wrong</h2>
             <p>-Check Your Spelling</p>
             <p>-Check Internet Connection</p>
             <p>-If It Still Don't Work Try Again Later</p>
