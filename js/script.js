@@ -18,6 +18,31 @@ const hideSection = () => {
     formInput.removeAttribute('readonly');
     focusInput();
 }
+const warningMessageContent = (time) => {
+    return `<h2>Somthing Went Wrong</h2>
+            <p>-Check Your Spelling</p>
+            <p>-Check Internet Connection</p>
+            <p>-If It Still Don't Work Try Again Later</p>
+            <p>This Message Will Dispire After ${time}s</p>`;
+}
+const createWarningElement = () => {
+    const div = document.createElement('div');
+    let timeValue = 5;
+    div.innerHTML = warningMessageContent(timeValue);
+    div.classList.add('warning');
+    nav.appendChild(div);
+    deleteWarningElement(div, timeValue);
+}
+const deleteWarningElement = (element, timeValue) => {
+    const intervalId = setInterval(() => {
+        timeValue--;
+        if (timeValue == 0) {
+            clearInterval(intervalId);
+            element.remove();
+        }
+        element.innerHTML = warningMessageContent(timeValue);
+    }, 1000)
+}
 const takeDataFromApi = async (country) => {
     const response = await fetch(`https://restcountries.com/v3.1/name/${country}?fullText=true`);
     if (!response.ok) {
@@ -48,6 +73,7 @@ const importCountryData = async function (country) {
         hideNav();
     } catch (err) {
         console.error(err);
+        createWarningElement();
     }
 }
 window.addEventListener('load', () => {

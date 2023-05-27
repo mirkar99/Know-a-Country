@@ -1,0 +1,17 @@
+.warning{
+    position: absolute;
+    top:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: calc(100%);
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 0.6em;
+    @media screen and (min-width:350px) {
+        font-size: 0.9em;
+    }  
+}
