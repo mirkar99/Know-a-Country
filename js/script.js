@@ -18,6 +18,22 @@ const hideSection = () => {
     formInput.removeAttribute('readonly');
     focusInput();
 }
+const createLoadingInBtn = () => {
+    formBtn.setAttribute('disabled', true);
+    formBtn.style.pointerEvents = 'none';
+    const intervalId = setInterval(() => {
+        if (!formBtn.disabled) {
+            formBtn.value = 'Check';
+            formBtn.style.removeProperty('pointer-events');
+            clearInterval(intervalId);
+            return;
+        }
+        if (formBtn.value === 'Check' || formBtn.value === '.....') {
+            formBtn.value = ''
+        }
+        formBtn.value += '.'
+    }, 500)
+}
 const warningMessageContent = (time) => {
     return `<h2>Something Went Wrong</h2>
             <p>-Check Your Spelling</p>
@@ -51,7 +67,16 @@ const takeDataFromApi = async (country) => {
     const data = await response.json();
     return data;
 }
-
+const loadImg = function (url) {
+    return new Promise((resolve, reject) => {
+        var src = url;
+        var image = new Image();
+        image.addEventListener('load', function () {
+            resolve();
+        });
+        image.src = src;
+    })
+}
 const dataFromApiToHtml = (apiResponse) => {
     const language = Object.values(apiResponse[0].languages)[0];
     const currency = Object.values(apiResponse[0].currencies)[0];
@@ -68,12 +93,17 @@ const dataFromApiToHtml = (apiResponse) => {
 }
 const importCountryData = async function (country) {
     try {
+        createLoadingInBtn();
         const response = await takeDataFromApi(country);
+        await loadImg(response[0].flags.svg);
+        await loadImg(response[0].coatOfArms.svg);
         dataFromApiToHtml(response);
         hideNav();
     } catch (err) {
         console.error(err);
         createWarningElement();
+    } finally {
+        formBtn.removeAttribute('disabled');
     }
 }
 window.addEventListener('load', () => {
